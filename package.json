@@ -1,0 +1,24 @@
+{
+  "name": "stormbot",
+  "version": "1.0.0",
+  "description": "Organizational bot for storm robotics",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atf1999/slackstorm.git"
+  },
+  "author": "Tom Orth (atf1999)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atf1999/slackstorm/issues"
+  },
+  "homepage": "https://github.com/atf1999/slackstorm#readme",
+  "dependencies": {
+    "@slack/client": "^3.6.0",
+    "fs-extra": "^0.30.0",
+    "mongoose": "^4.6.3"
+  }
+}
