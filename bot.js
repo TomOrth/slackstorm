@@ -31,7 +31,15 @@ bot.on(RTM_EVENTS.MESSAGE, function (message) {
         dm = bot.dataStore.getDMByName(user.name);
 
     if(user.name !== config.name && message.text.startsWith(config.prefix)){
-        bot.sendMessage('Hello ' + user.name + '!', message.channel);
+        let content = message.text.split(config.prefix)[1],
+            cmd = content.substring(0, content.indexOf(' ')),
+            args = content.substring(content.indexOf(' ') + 1, content.length);
+        if (plugins.get(cmd) !== undefined && content.indexOf(' ') !== -1) {
+	    message.text = args;
+	    plugins.get(cmd).main(bot, message);
+	} else if (plugins.get(content) !== undefined && content.indexOf(' ') < 0) {
+	    plugins.get(content).main(bot, message);
+	} 
     }
 });
 
