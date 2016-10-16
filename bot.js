@@ -5,6 +5,8 @@ const fs = require('fs');
 const CLIENT_EVENTS = require('@slack/client').CLIENT_EVENTS;
 const config = require('./config.json');
 const bot = new RtmClient(config.token, {logLevel: 'debug'});
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/stormlog');
 bot.start();
 
 let plugins = new Map();
@@ -36,7 +38,7 @@ bot.on(RTM_EVENTS.MESSAGE, function (message) {
             args = content.substring(content.indexOf(' ') + 1, content.length);
         if (plugins.get(cmd) !== undefined && content.indexOf(' ') !== -1) {
 	    message.text = args;
-	    plugins.get(cmd).main(bot, message);
+	    plugins.get(cmd).main(bot, message, mongoose);
 	} else if (plugins.get(content) !== undefined && content.indexOf(' ') < 0) {
 	    plugins.get(content).main(bot, message);
 	} 
