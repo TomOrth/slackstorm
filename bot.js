@@ -24,7 +24,7 @@ function loadPlugins(){
 
 
 bot.on(CLIENT_EVENTS.RTM.AUTHENTICATED, function(rtmStartData){
-    console.log('Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}');
+    console.log(`Logged in as ${rtmStartData.self.name} of team ${rtmStartData.team.name}`);
     loadPlugins();
 });
 
