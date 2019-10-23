@@ -19,6 +19,6 @@
   "dependencies": {
     "@slack/client": "^3.6.0",
     "fs-extra": "^0.30.0",
-    "mongoose": "^4.6.3"
+    "mongoose": "^5.7.6"
   }
 }
